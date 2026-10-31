@@ -10,7 +10,7 @@ from firebase_logger import ghi_log_wallet
 
 QR_DIR = Path("QRCODE")
 QR_DIR.mkdir(parents=True, exist_ok=True)
-ACCOUNT_NUMBER = "860671050278271"
+ACCOUNT_NUMBER = "05817666778899"
 BANK_ID = "970422"
 ACCOUNT_NAME = "BUI NGUYEN XUAN NHAT"
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
