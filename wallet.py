@@ -39,7 +39,7 @@ async def cmd_nap(u_obj, x_obj):
         return
     caption = ("<b>HƯỚNG DẪN CHUYỂN KHOẢN</b>\n\n"
         "Ngân hàng: <b>MB BANK</b>\n"
-        "Số tài khoản: <code>860671050278271</code>\n"
+        "Số tài khoản: <code>05817666778899</code>\n"
         "Chủ tài khoản: <b>BUI NGUYEN XUAN NHAT</b>\n"
         f"Số tiền: <b>{amount:,.0f} VNĐ</b>\nNội dung: <code>{content}</code>\n\n"
         "⚠️ QR chỉ tạo yêu cầu chuyển khoản; bot hiện chưa xác minh giao dịch ngân hàng tự động. Không coi ảnh QR là xác nhận đã nạp tiền.")
