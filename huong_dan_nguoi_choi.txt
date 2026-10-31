@@ -1,0 +1,26 @@
+📖 <b>HƯỚNG DẪN SỬ DỤNG</b>
+
+<b>1. ĐẶT CƯỢC</b>
+• Tài: nhắn <code>T10000</code> (thay số tiền theo ý muốn).
+• Xỉu: nhắn <code>X50000</code>.
+• Mức cược: 1.000đ–100.000đ; mỗi phiên chỉ đặt một cửa.
+• Tỉ lệ trả thưởng được hiển thị khi mở phiên; kết quả xúc xắc được tạo ngẫu nhiên.
+
+<b>2. NẠP TIỀN</b>
+• Dùng <code>/nap [số_tiền]</code>, tối thiểu 10.000đ.
+• QR chỉ chứa thông tin chuyển khoản. Bot hiện chưa tích hợp xác minh giao dịch ngân hàng tự động, vì vậy việc tạo QR không đồng nghĩa tiền đã được cộng. Chỉ xác nhận nạp tiền sau khi giao dịch được đối chiếu.
+
+<b>3. RÚT TIỀN</b>
+• Cú pháp: <code>/rut [mã_ngân_hàng] [số_tài_khoản] [tên_chủ_tài_khoản] [số_tiền]</code>
+• Ví dụ: <code>/rut mb 123456789 BUI NGUYEN XUAN NHAT 150000</code>
+• Số tiền: 100.000đ–1.000.000đ. Mỗi người chỉ có một yêu cầu rút đang chờ; số tiền được giữ lại cho đến khi admin duyệt hoặc từ chối.
+
+<b>4. NÚT TIỆN ÍCH</b>
+• “Thông tin tài khoản”: xem số dư và trạng thái cược.
+• “Nạp tiền” / “Rút tiền”: xem hướng dẫn giao dịch.
+• “Lịch sử cược cá nhân”: xem các phiên gần đây và giao dịch.
+• “Bảng xếp hạng”: xem top 10 theo số dư.
+• “Tắt/Bật thông báo”: quản lý tin nhắn thông báo phiên.
+• “Nhập code”: gửi mã quà tặng dạng <code>BNDZ_XXXXXXXX</code>.
+
+Nếu phát hiện sai số dư hoặc lỗi, hãy liên hệ quản trị viên và cung cấp thời gian/số phiên liên quan.

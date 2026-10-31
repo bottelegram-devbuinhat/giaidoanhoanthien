@@ -1,0 +1,15 @@
+{
+    "admin_ids": [
+        8792000582
+    ],
+    "default_balance": 10000,
+    "tai_ratio": 1.95,
+    "xiu_ratio": 1.95,
+    "bet_active": true,
+    "session_id": 237,
+    "session_date": "2026-10-25",
+    "referral_rate": 0.01,
+    "morning_greetings_sent": [],
+    "cancel_round_requested": false,
+    "token": "8952999316:AAFuQcHfIkop9-CJAzWDhzDNJ6UDbiV7iFA"
+}

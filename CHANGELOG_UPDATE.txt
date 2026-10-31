@@ -1,0 +1,9 @@
+CAP NHAT GIAO DIEN / REFERRAL / PHIEN
+
+1. Loi chao buoi sang: gui luc 06:00 va loi chuc ngay tot lanh luc 08:00 theo gio Viet Nam, cho tai khoan da tung mo bot va khong bi chan.
+2. Loi chao nguoi choi va admin: bo cuc moi voi emoji, phan chia thong tin va nut menu gon hon.
+3. Referral: /start REFERRER_ID gan ref mot lan, chan tu gioi thieu; profile luu referrals, refs, referred_by va ref_earnings.
+4. Thuong referral: mac dinh 1% tien cuoc da chot cua nguoi duoc gioi thieu. Khong khuyen nghi 2% vi ti le tra 1.95x chi de lai bien ly thuyet khoang 2.5% truoc chi phi.
+5. Ma phien: tang va luu truoc khi mo phien, tranh dung lai ma phien sau restart.
+6. Thay yeu cau sua cau bang nut huy phien dang mo va hoan cuoc, co log. Khong them ep ket qua am tham.
+7. Da chay compileall, AST parse va kiem tra JSON. Chua test live voi Telegram/Firebase/ngan hang.

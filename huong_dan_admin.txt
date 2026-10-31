@@ -1,0 +1,31 @@
+==================================================
+        HƯỚNG DẪN QUẢN TRỊ HỆ THỐNG (ADMIN)
+==================================================
+
+1. QUẢN LÝ GIAO DỊCH
+- Cộng tiền: /cong [user_id] [số_tiền_dương]
+- Trừ tiền: /tru [user_id] [số_tiền_dương] (không thể trừ vượt số dư)
+- Chuyển khoản ngân hàng thủ công trước, sau đó duyệt yêu cầu rút đang chờ: /duyet [user_id] [số_tiền]
+- Từ chối yêu cầu rút và hoàn lại số tiền đã giữ: /tuchoi [user_id] [số_tiền]
+- Tạo QR nạp: /nap [số_tiền]. QR không xác minh giao dịch; phải đối chiếu giao dịch ngân hàng thủ công. Bot chưa tự chuyển tiền khi duyệt rút.
+
+2. GIFTCODE VÀ QUYỀN ADMIN
+- Tạo code: /crcode [mã_BNDZ] [số_lượt] [số_tiền]
+- Duyệt code đang chờ: /duyetcode [mã]
+- Thêm admin: /addadmin [user_id]
+- Xóa admin (chỉ admin tối cao): /kickadmin [user_id]
+
+3. NÚT BẤM
+- “👥 Quản lý người chơi”: chọn tài khoản để xem số dư/trạng thái; bấm nút Chặn/Mở chặn để quản lý quyền chơi.
+- “👑 Quản lý Admin”: xem danh sách ID admin.
+- “🎟️ Tạo code”: xem cú pháp tạo code.
+- “📜 Lịch sử Server & Code”: xem lịch sử ván, giao dịch và code.
+- “💰 Cộng/Trừ tiền”: xem cú pháp điều chỉnh số dư.
+- “📊 Thống kê hệ thống”: xem tổng người dùng và tổng số dư.
+- “🛑 Tắt bot”: dừng tiến trình bot.
+
+4. TÍNH TOÀN VẸN
+- Kết quả xúc xắc được tạo ngẫu nhiên; chức năng ép kết quả/sửa cầu đã bị loại bỏ.
+- Tỉ lệ trả thưởng hiển thị khi mở cược; không có cơ chế tự động thay đổi xác suất theo tổng tiền cược.
+- Hoạt động quản trị, thay đổi số dư, nạp/rút, code, cược và lỗi được ghi log Firebase; nếu Firebase lỗi sẽ thử ghi audit_fallback.log.
+- Các yêu cầu rút cũ từ phiên bản trước không có trạng thái pending trong data.json; cần đối chiếu lich_su_nap_rut.txt trước khi xử lý chúng.

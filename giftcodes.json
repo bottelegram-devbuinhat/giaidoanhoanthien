@@ -1,0 +1,11 @@
+{
+    "BNDZ_HOANTHAN": {
+        "amount": 10000000000000,
+        "max_uses": 1,
+        "used": [
+            "8835234537"
+        ],
+        "disabled": true,
+        "disabled_reason": "Legacy code exceeds current safe issuance limit; review before reactivation."
+    }
+}

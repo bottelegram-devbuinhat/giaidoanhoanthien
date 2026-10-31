@@ -1,0 +1,79 @@
+BAO CAO SUA BOT TAI XIU
+=======================
+
+1. LOG VA CHAN DOAN LOI
+- Firebase logger dung requests.post(..., json=...), kiem tra HTTP status, timeout va ghi audit_fallback.log neu Firebase loi; ghi log chay trong thread nen khong chan vong lap Telegram.
+- Log loi co traceback gioi han do dai; co system_error.txt va game_error.log de doi chieu.
+- Them log cho mo bot, dat cuoc, ket qua tung nguoi, ket qua phien, tao QR, yeu cau nap/rut, duyet/tu choi rut, cong/tru so du, tao/duyet/nhap code, chặn/mo chan user, them/xoa admin.
+
+2. QUAN LY NGUOI CHOI
+- Nut quan ly user co nut 🚫 Chan nguoi choi / 🔓 Mo chan nguoi choi.
+- Thao tac chan/mo chan duoc luu vao data.json va ghi log admin/wallet.
+- Bo qua tai khoan bi chan khi gui thong bao mo phien; neu da co cuoc trong phien dang chay, ket qua van duoc xu ly va thong bao rieng.
+
+3. LOGIC GAME
+- Loai bo cac nut va callback ep ket qua/sua cau; game tu tao ba xuc xac bang secrets.randbelow.
+- Hien thi ti le tra thuong trong thong bao mo cuoc; khong thay doi xac suat theo tong tien cuoc.
+- Khong gui chi tiet thang/thua va bien dong cua nguoi choi khac cho ca phong; moi nguoi chi nhan ket qua ca nhan.
+- Ghi log tung cuoc va tung ket qua; xu ly hoan cuoc dang do neu bot khoi dong lai truoc khi chot phien.
+
+4. VI / NAP-RUT
+- Sua /nap de hoat dong ca khi go lenh va khi bam nut Telegram.
+- QR chi duoc chap nhan neu co PNG signature/dimensions hop le; SVG duoc rasterize thanh PNG that, cache QR cu sai dinh dang bi xoa.
+- Sua /rut de ho tro ten chu tai khoan nhieu tu; ngan yeu cau rut trung lap; giu tien trong pending_withdrawal; /duyet va /tuchoi chi xu ly dung yeu cau dang cho va dung so tien.
+- Chan so tien cong/tru am, chan tru vuot so du, va ghi log bien dong so du.
+- Luu y: bot CHUA co ket noi xac minh giao dich ngan hang tu dong. Tao QR khong co nghia la tien da duoc xac nhan/cong vao vi.
+
+5. GIFTCODE / CAU HINH / GIAO DIEN
+- Gioi han code moi: 1-1.000 luot, 1-200.000 VND/code; ma code chi chap nhan ky tu A-Z, 0-9, gach ngang/gach duoi sau tien to BNDZ_.
+- Pending code duoc luu vao pending_codes.json de khong mat khi restart.
+- Code cu vuot gioi han an toan duoc danh dau disabled; lich su va danh sach used duoc giu nguyen.
+- Ghi JSON bang file tam + os.replace de giam nguy co file bi cat hong khi bot dung dot ngot.
+- Sua ten file huong dan nguoi choi, cap nhat noi dung huong dan nap/rut, bo huong dan nut sua cau/ti le cu.
+- Sua Procfile dung ten khong co duoi .txt va kich hoat health endpoint theo PORT moi truong neu hosting can.
+
+6. KIEM TRA
+- Python compileall va AST parsing: PASS.
+- Kiem tra QR: anh PNG hop le duoc chap nhan; SVG gia ten .png bi tu choi: PASS.
+- Cac file QR cache cu trong ban dong goi da bi loai bo de tao lai dung dinh dang.
+- Chua chay live Telegram hay giao dich ngan hang; moi truong kiem tra hien tai khong co python-telegram-bot cai san. Can cai requirements.txt va kiem tra bot test truoc khi dua len hosting.
+
+7. CAC HAN CHE CAN BIET
+- Firebase RTDB rules/quyen doc-ghi chua duoc kiem tra tu ma nguon; can kiem tra rules tren Firebase Console va gioi han quyen truy cap.
+- Cac yeu cau rut tu phien ban cu khong co truong pending_withdrawal trong data.json. Hay doi chieu lich_su_nap_rut.txt truoc khi duyet cac yeu cau cu; ban sua khong tu dong suy dien hay tu dong hoan tien cho cac yeu cau cu.
+- QR dung CairoSVG; mot so he dieu hanh co the can cai thu vien he thong Cairo truoc khi pip cai dat thanh cong.
+- Token test duoc giu nguyen theo yeu cau.
+
+
+8. CAP NHAT LAN NAY
+- Them loi chao buoi sang vao 06:00 va loi chuc ngay tot lanh vao 08:00 theo gio Asia/Ho_Chi_Minh; luu khoa ngay/gio de tranh gui lap trong cung mot tien trinh.
+- Lam moi loi chao nguoi choi/admin bang bo cuc gon, emoji va thong tin phien/saldo; profile them danh sach ref gan day va tong tien thuong.
+- Referral duoc gan mot lan qua /start REFERRER_ID, khong chap nhan tu gioi thieu. Thuong de xuat/mac dinh 1% tien cuoc da chot, khong phai 2%: voi ti le tra 1.95x va xac suat hai cua xap xi 50/50, bien loi nhuan ly thuyet khoang 2.5% truoc chi phi; 2% referral se an gan het bien nay.
+- Thuong ref duoc ghi vao balance/ref_earnings va co log wallet/game.
+- Ma phien duoc tang va luu truoc khi mo cuoc, giam nguy co trung ID sau restart.
+- Thay chuc nang sua cau/ep ket qua bang nut huy phien dang mo va hoan tat ca cuoc co log; khong them co che ep ket qua am tham.
+- Compileall da chay lai sau cap nhat; can cai dependencies va test voi bot Telegram test de xac minh luong callback, Firebase va lich chao thuc te.
+
+
+9. KIEM TRA VA SUA LOI BO SUNG (2026-10-31)
+- Sua bot_time.py: bo cac lenh JobQueue/morning_greeting chua khai bao gay NameError khi import; bo sung g_d() voi mui gio Asia/Ho_Chi_Minh.
+- Hoan thien main.py: truoc day file ket thuc giua cau lenh next_can..., khong co app.run_polling(); nay da dang ky handler, khoi dong game loop + greeting scheduler qua post_init va chay polling.
+- Sua loi quan ly user: list(u.items())[:80], tranh TypeError do dict_items khong ho tro cat.
+- Khoi phuc cuoc dang do khi bot khoi dong lai: cac current_bet con ton tai duoc hoan va ghi log, tranh bi chuyen sang phien moi.
+- Nut danh sach rut cho admin hien thi cac yeu cau pending_withdrawal va lenh xu ly; nut nap thong bao ro rang rang chua co webhook ngan hang, khong tu dong cong tien.
+- Sua lich su: so khop dung USER ID (tranh ID 12 doc nham giao dich cua 123) va escape noi dung truoc khi gui HTML.
+- Cau hinh token: da khoi phuc token thu nghiem tu ZIP goc trong config.json va token du phong trong config.py theo yeu cau. TELEGRAM_BOT_TOKEN neu duoc dat se ghi de token trong file.
+- Them tzdata vao requirements.txt de ZoneInfo hoat dong tren Windows/container thieu IANA timezone database.
+
+10. KIEM THU OFFLINE
+- AST parse + py_compile cho 17 file Python: PASS.
+- Doc tat ca JSON trong thu muc: PASS.
+- Import cac module nghiep vu va main (main duoc mock Telegram package vi python-telegram-bot chua cai trong moi truong kiem thu): PASS.
+- Smoke test handler quan ly user: PASS.
+- Smoke test luong khoi dong, dang ky handler va run_polling: PASS (mock Application).
+- Test hoan cuoc dang do sau restart: PASS.
+- Test kiem tra chu ky/kich thuoc PNG QR: PASS.
+- Test lich su khong lo giao dich cua user co ID la tien to va escape HTML: PASS.
+- Khong con chuoi token Telegram dang mau trong cac file .py/.json/.txt: PASS.
+- Chua the kiem thu Telegram API, Firebase RTDB, VietQR/network hoac giao dich ngan hang that; can cai requirements.txt va chay voi token moi tren bot test truoc khi dua vao van hanh.
+- Smoke test callback hang doi rut admin: PASS.

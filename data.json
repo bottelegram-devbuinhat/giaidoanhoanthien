@@ -1,0 +1,35 @@
+{
+    "8792000582": {
+        "name": "So",
+        "balance": 10000,
+        "wins": 0,
+        "bets_count": 0,
+        "refs": 0,
+        "blocked": false,
+        "current_bet": null,
+        "history": [],
+        "nhan_thong_bao": false,
+        "referrals": [],
+        "referred_by": null,
+        "ref_earnings": 0
+    },
+    "8835234537": {
+        "name": "spam",
+        "balance": 10000,
+        "wins": 4,
+        "bets_count": 8,
+        "refs": 0,
+        "blocked": false,
+        "current_bet": null,
+        "history": [
+            "Phiên #0030 | Cược XIU 10,000đ | THẮNG (+19,500đ)",
+            "Phiên #0028 | Cược TAI 10,000đ | THUA (-10,000đ)",
+            "Phiên #0027 | Cược TAI 10,000đ | THẮNG (+19,500đ)",
+            "Phiên #0006 | Cược XIU 1,000đ | THUA (-1,000đ)",
+            "Phiên #0004 | Cược TAI 10,000đ | THUA (-10,000đ)",
+            "Phiên #167: Đặt 100000đ TAI -> Thắng (+95000đ)",
+            "Phiên #172: Đặt 100000đ TAI -> Thắng (+95000đ)"
+        ],
+        "nhan_thong_bao": true
+    }
+}
